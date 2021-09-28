@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
   // create a new tag
   try {
     const newTag = await Tag.create({
-      tagName: req.body.tagName,
+      tag_name: req.body.tag_name,
     });
     res.status(200).json(newTag);
   } catch (err) {
@@ -45,17 +45,17 @@ router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   try {
     const updateTag = await Tag.update({
-      tagName: req.body.tagName,
+      tag_name: req.body.tag_name,
     },
     {
       where: {
-         id: req.perams.id,
-      },
+         id: req.params.id,
+      }
     });
     res.status(200).json(updateTag);
   } catch (err) {
     res.status(400).json(err);
-  }
+  };
 });
 
 router.delete('/:id', async (req, res) => {
